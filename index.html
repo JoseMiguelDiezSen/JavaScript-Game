@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Snake</title>
+
+    
+    <link rel=stylesheet id="style" type="text/css" href="./css/dark-snake.css" />
+
+
+  <script>
+          function getTheme () {
+              function changeTheme (Theme) {
+                  document.getElementById('style').setAttribute('href', Theme);
+              }
+              var index = document.getElementById("select").selectedIndex;
+              switch (index) {
+                  case 0: 
+                  
+                  document.getElementById('game-area').style.backgroundColor = "Green";
+                    break;
+                  case 1: 
+                  document.getElementById('game-area').style.backgroundColor = "Blue";
+                    break;
+                  case 2: 
+                  document.getElementById('game-area').style.backgroundColor = "Yellow";
+                  
+                  break;
+                  default:
+                
+                    break;
+              }
+              setTimeout(function() {
+                  document.getElementById('game-area').focus();
+              }, 10);
+          }
+
+
+</script>
+</head>
+<body>
+
+
+
+    <!--Seleccion del color de fondo del tablero-->
+    <div align ="center" style="padding: 15px;background-color: brown">
+      <div style="display:inline-block;">
+        <span>COLOR </span>
+        <select onchange="getTheme()" id="select">
+            <option>Verde</option>
+            <option selected>Azul</option>
+            <option>Amarillo</option>
+        </select>
+      </div>
+
+
+      <!--Seleccion del Nivel del juego-->
+      <div style="display:inline-block;margin-right:10px;">
+        <span>NIVEL:</span>
+        <select id="selectMode" onchange="setLevel()">
+            <option value="1000">Fácil</option>
+            <option selected value="65">Intermedio</option>
+            <option value="10">Díficil</option>
+        </select>
+      </div>
+
+
+      <div style="display:inline-block">
+       <p id = "puntuacion"></p>
+      </div> 
+
+
+      <div style="display:inline-block;margin-right:10px;">
+        <button id="high-score">Tu máxima puntuación</button>
+      </div>
+    </div>
+
+
+    <!--Comida de la serpiente-->
+    <div id="mode-wrapper" style="display: inline; width: auto;">
+    </div>
+
+    <!--Area del juego-->
+    <div id="game-area" tabindex="0" style="margin-left: 35%"></div>
+
+
+ 
+
+
+    <script type="text/javascript" src="./js/snake.js"></script>
+    
+    <script type="text/javascript">
+		var mySnakeBoard = new SNAKE.Board(  {
+		    boardContainer: "game-area",
+        fullScreen: false
+        
+		});    
+
+    </script>
+</body>
+</html>
